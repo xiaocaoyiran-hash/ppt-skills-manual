@@ -147,6 +147,7 @@ li b,li strong{color:var(--text)}
 .mock-nav span{font-size:11.5px;color:var(--text-3);padding:3px 8px;border-radius:5px}
 .mock-nav span.on{color:#0d8a70;background:var(--accent-soft);font-weight:600}
 .mock-search{margin-left:auto;font-size:11px;color:var(--text-3);border:1px solid var(--border);border-radius:6px;padding:3px 9px;background:var(--panel-2)}
+.mock-sync{margin-left:8px;font-size:10.5px;color:#0d8a70;border:1px solid var(--border-2);border-radius:999px;padding:2px 9px;background:var(--accent-soft);white-space:nowrap;font-weight:600}
 .mock-hero{padding:26px 18px 22px}
 .mock-hero .k{font-size:10.5px;color:var(--text-3);border:1px solid var(--border);border-radius:999px;padding:2px 9px;display:inline-block}
 .mock-hero h1{font-size:clamp(18px,3vw,28px);margin:10px 0 8px;letter-spacing:-.8px;line-height:1.2;font-weight:800}
@@ -292,7 +293,7 @@ footer{padding:34px 0 54px;background:var(--panel-2);border-top:1px solid var(--
     <span class="sep"></span>
     <span class="t">图鉴怎么用<em>使用说明书</em></span>
     <span class="sp"></span>
-    <a class="ghost" href="https://kb-qa-agent-92848.app.workbuddy.host/" target="_blank" rel="noopener">打开图鉴 ↗</a>
+    <a class="ghost" href="https://xiaocaoyiran-hash.github.io/yanxuanjia-ppt-skills-web/" target="_blank" rel="noopener">打开图鉴 ↗</a>
   </div>
 </header>
 
@@ -318,13 +319,13 @@ footer{padding:34px 0 54px;background:var(--panel-2);border-top:1px solid var(--
       <h1>227 个 skill，<br><span class="hl">五个动作挑对那一个。</span></h1>
       <p class="lede">这份说明书只讲一件事：怎么用图鉴这个网页，在 3 分钟内从 227 个 AI 幻灯片 skill 里，挑出能直接交付的那一个。</p>
       <div class="hero-cta">
-        <a class="btn primary" href="https://kb-qa-agent-92848.app.workbuddy.host/" target="_blank" rel="noopener">打开图鉴 →</a>
+        <a class="btn primary" href="https://xiaocaoyiran-hash.github.io/yanxuanjia-ppt-skills-web/" target="_blank" rel="noopener">打开图鉴 →</a>
         <a class="btn" href="#actions">直接看五个动作</a>
       </div>
       <div class="meta">
         <span>适用：<b>运营团队</b></span>
         <span>技能数：<b>227</b></span>
-        <span>数据刷新：<b>2026-09-04</b></span>
+        <span>数据：<b>快照 09-04 · 可一键同步最新</b></span>
         <span>说明书版本：<b>2026-10-20</b></span>
       </div>
     </div>
@@ -354,6 +355,10 @@ footer{padding:34px 0 54px;background:var(--panel-2);border-top:1px solid var(--
       </div>
 
       <div class="note key">
+        <span class="lbl">永远最新</span>图鉴支持<b>一键同步 GitHub 最新数据</b>：顶栏或首页点「↻ 同步 GitHub」，即拉取 many-ppt-skills 登记册的最新版，不用等新版说明书。
+      </div>
+
+      <div class="note key">
         <span class="lbl">一句话</span><b>先问「能不能编辑」，再问「好不好看」。</b>顺序反了，就会挑到一个好看但交不出去的方案。
       </div>
     </section>
@@ -365,12 +370,14 @@ footer{padding:34px 0 54px;background:var(--panel-2);border-top:1px solid var(--
       <p>顶部导航三个页签：<b>首页</b>（决策与精选）、<b>全部技能</b>（筛选与搜索）、<b>风格图库</b>（534 张样图）。所有功能都在这三块里。</p>
 
       <div class="wire reveal">
-        <div class="wire-bar"><i></i><i></i><i></i><span>kb-qa-agent-92848.app.workbuddy.host</span></div>
+        <div class="wire-bar"><i></i><i></i><i></i><span>xiaocaoyiran-hash.github.io/yanxuanjia-ppt-skills-web</span></div>
         <div class="wire-body">
           <div class="mock-top">
             <img class="mock-logo" src="assets/brand/logo.png" alt="">
             <span class="mock-name">PPT Skills<em>图鉴</em></span>
             <div class="mock-nav"><span class="on">首页</span><span>全部技能</span><span>风格图库</span></div>
+            <span class="mock-sync">↻ 同步 GitHub</span>
+            <span class="pin" style="position:static">9</span>
             <span class="mock-search">搜索 skill、风格 ID… ⌘K</span>
             <span class="pin" style="position:static">4</span>
           </div>
@@ -428,6 +435,11 @@ footer{padding:34px 0 54px;background:var(--panel-2);border-top:1px solid var(--
         <div><span class="pin">6</span><span><b>能力开关</b>：点亮即过滤。右侧实时显示「命中数 / 总数」。</span></div>
         <div><span class="pin">7</span><span><b>技能卡片</b>：左侧色条代表路线，右上角是路线标签，底部是 Tier、许可与 star。</span></div>
         <div><span class="pin">8</span><span><b>详情抽屉</b>：点卡片从右侧滑出，一张完整的体检卡。</span></div>
+        <div><span class="pin">9</span><span><b>同步 GitHub 按钮</b>：顶栏「↻」与首页徽章各一个。点一下即从 many-ppt-skills 登记册拉取最新数据集，页面即时刷新、本地缓存；徽章同时链向该数据源仓库。</span></div>
+      </div>
+
+      <div class="note tip">
+        <span class="lbl">新增能力</span><b>实时同步 GitHub 最新数据 + 数据源直链。</b>顶栏「↻」图标与首页徽章「↻ 同步 GitHub」均可一键拉取 many-ppt-skills 登记册最新数据（含 star / 综合分 / 能力矩阵 / 534 张样图），前端即时重渲染并缓存本地；徽章与页脚均链向 <a href="https://github.com/brycewang-stanford/many-ppt-skills" target="_blank" rel="noopener">brycewang-stanford/many-ppt-skills</a>，可溯源、可提 issue。
       </div>
     </section>
 
@@ -516,7 +528,7 @@ footer{padding:34px 0 54px;background:var(--panel-2);border-top:1px solid var(--
 
       <div class="chart-wrap reveal">
         <h4>路线决定一半的选择题</h4>
-        <p class="sub">227 个 skill 按输出路线分布 · 数据源 many-ppt-skills（2026-09-04 刷新）</p>
+        <p class="sub">227 个 skill 按输出路线分布 · 数据源 many-ppt-skills（支持一键同步 GitHub 最新）</p>
         <div class="chart" id="chart-route"></div>
         <div class="chart-note"><b>怎么用：</b>网页 HTML 83 个、原生 PPTX 79 个，两条主线合计 162 个，占全部 227 的 71%。所以第一步永远是问「对方要不要用 PowerPoint 改」，答完这一步，三分之二的候选直接出局。</div>
       </div>
@@ -640,25 +652,30 @@ footer{padding:34px 0 54px;background:var(--panel-2);border-top:1px solid var(--
 
       <details>
         <summary>「页面上的数据多久更新一次？」</summary>
-        <p>上游登记册刷新后，由同步脚本拉取并重建，页脚会写明「数据同步于」的日期。当前为 <b>2026-09-04</b> 刷新版。</p>
+        <p>页面默认载入打包好的快照（当前 <b>2026-09-04</b> 版）。想看最新，点顶栏或首页徽章的「<b>↻ 同步 GitHub</b>」即可实时拉取 many-ppt-skills 登记册的最新数据 —— 含最新 star、综合分、能力矩阵与样图，页脚会更新为本次同步的构建日期，并本地缓存（断网也能看上次结果）。维护方也会定期重打包发布。</p>
       </details>
     </section>
 
     <!-- 08 -->
     <section id="ops">
       <div class="sec-no">08 / 维护与更新</div>
-      <h2>上游更新了，怎么同步</h2>
-      <p>图鉴的数据来自公开登记册，不是手工维护的表格。上游刷新后，跑一条命令重建即可。</p>
+      <h2>数据怎么保持最新</h2>
+      <p>图鉴的数据来自公开登记册 <a href="https://github.com/brycewang-stanford/many-ppt-skills" target="_blank" rel="noopener">many-ppt-skills</a>，不是手工维护的表格。</p>
+
+      <h3>用户侧：一键同步，不用等技术员</h3>
+      <p>打开图鉴后，点顶栏「↻」或首页徽章「↻ 同步 GitHub」，即实时拉取登记册的最新编译数据集（star / 综合分 / 能力矩阵 / 534 张样图全部刷新），页面即时重渲染，并缓存到本地 —— 断网也能看上次同步的结果。同步状态在顶栏与首页徽章可见。</p>
+
+      <h3>维护侧：重打包发布（可选）</h3>
+      <p>若要把最新数据固化进站点快照，维护方可跑构建脚本重建，再发布。</p>
       <pre>cd F:/work/_ppt-atlas-build
 python sync.py            # 拉上游 → 比对新增/移除/有更新 → 补下载样图 → 重建数据
 python sync.py --build    # 断网时，仅用本地缓存重建</pre>
       <p>脚本会打印本次变化：新增了哪些 id、移除了哪些、哪些条目有更新。先审一遍再发布，避免上游误删把页面筛空。</p>
 
-      <h3>发布</h3>
+      <h3>发布地址</h3>
       <table class="tbl">
-        <tr><th>方式</th><th>怎么做</th><th>特点</th></tr>
-        <tr><td>WorkBuddy 站点</td><td>说一句「同步线上」，覆盖当前链接</td><td>最快，链接不变，约 1 分钟生效</td></tr>
-        <tr><td>GitHub Pages</td><td><code>bash deploy-gh.sh</code></td><td>需先 <code>gh auth login</code>，适合对外长期托管</td></tr>
+        <tr><th>环境</th><th>地址</th><th>说明</th></tr>
+        <tr><td>GitHub Pages（主）</td><td><code>xiaocaoyiran-hash.github.io/yanxuanjia-ppt-skills-web</code></td><td>对外长期托管，更新走 <code>bash deploy-gh.sh</code></td></tr>
       </table>
 
       <div class="note"><span class="lbl">边界</span>本说明书只覆盖「图鉴网页怎么用」。具体某个 skill 怎么写出好 PPT，属于另一个话题，不在本文范围。</div>
@@ -666,7 +683,7 @@ python sync.py --build    # 断网时，仅用本地缓存重建</pre>
 
     <section id="credit">
       <div class="sec-no">09 / 来源</div>
-      <p style="font-size:13.4px">数据源：<a href="https://github.com/brycewang-stanford/many-ppt-skills" target="_blank" rel="noopener">many-ppt-skills</a> 登记册（CC BY 4.0）。样图版权归各项目所有。图鉴站点：<a href="https://kb-qa-agent-92848.app.workbuddy.host/" target="_blank" rel="noopener">kb-qa-agent-92848.app.workbuddy.host</a>。品牌色取自研选家 2026 品牌规范：标准色 <code>#11af8e</code>，辅助色 <code>#fcd058</code> / <code>#8fd3f5</code>。</p>
+      <p style="font-size:13.4px">数据源：<a href="https://github.com/brycewang-stanford/many-ppt-skills" target="_blank" rel="noopener">many-ppt-skills</a> 登记册（CC BY 4.0）。样图版权归各项目所有。图鉴站点：<a href="https://xiaocaoyiran-hash.github.io/yanxuanjia-ppt-skills-web/" target="_blank" rel="noopener">yanxuanjia-ppt-skills-web</a>（已支持 <b>一键同步 GitHub 最新数据</b>，并直链数据源仓库）。品牌色取自研选家 2026 品牌规范：标准色 <code>#11af8e</code>，辅助色 <code>#fcd058</code> / <code>#8fd3f5</code>。</p>
     </section>
 
   </main>
