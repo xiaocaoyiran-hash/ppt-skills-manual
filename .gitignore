@@ -1,0 +1,6 @@
+_build/
+node_modules/
+*.png
+!assets/brand/*.png
+!assets/img/*.jpg
+!assets/charts/*.js

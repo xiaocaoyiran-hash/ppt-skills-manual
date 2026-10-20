@@ -1,0 +1,811 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>图鉴怎么用 · PPT Skills 图鉴使用说明书</title>
+<meta name="description" content="PPT Skills 图鉴（运营使用版）使用说明书：五个动作，从 227 个 skill 里挑对那一个。">
+<meta name="theme-color" content="#11af8e">
+<link rel="icon" href="assets/brand/logo.png">
+<style>
+/* ============================================================
+   研选家 · 使用说明书
+   品牌标准色 #11af8e ｜ 辅助色 #fcd058 / #8fd3f5
+   ============================================================ */
+:root{
+  --brand:#11af8e; --brand-2:#3ec9ab; --brand-deep:#0b4f45;
+  --gold:#fcd058; --gold-deep:#b8860b; --sky:#8fd3f5; --sky-deep:#2f9fd0;
+  --text:#123f38; --text-2:#4d706a; --text-3:#86a09a;
+  --bg:#f7fbfa; --panel:#ffffff; --panel-2:#f1f8f6; --panel-3:#e6f1ef;
+  --border:rgba(17,175,142,.16); --border-2:rgba(17,175,142,.32);
+  --accent-soft:rgba(17,175,142,.10);
+  --shadow:0 14px 40px rgba(11,79,69,.09);
+  --shadow-sm:0 3px 12px rgba(11,79,69,.06);
+  --mono:"JetBrains Mono","SFMono-Regular",Consolas,"Liberation Mono",monospace;
+  --ease:cubic-bezier(.32,.72,0,1);
+  --wrap:1120px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:88px}
+body{
+  margin:0;background:var(--bg);color:var(--text);
+  font-family:"PingFang SC","Microsoft YaHei","Hiragino Sans GB",system-ui,-apple-system,"Segoe UI",sans-serif;
+  font-size:15.5px;line-height:1.78;-webkit-font-smoothing:antialiased;
+}
+a{color:#0d8a70;text-decoration:none}
+a:hover{text-decoration:underline}
+code,kbd,.mono{font-family:var(--mono)}
+code{background:var(--accent-soft);color:#0d8a70;padding:1px 6px;border-radius:5px;font-size:.87em}
+kbd{display:inline-block;background:var(--accent-soft);border:1px solid var(--border);border-radius:5px;padding:0 6px;font-size:.78em;color:var(--text-2);line-height:1.75}
+img{max-width:100%;display:block}
+::selection{background:rgba(17,175,142,.2)}
+
+/* 背景 */
+.bg{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+.bg i{position:absolute;border-radius:50%;filter:blur(90px)}
+.bg .b1{width:44vw;height:44vw;top:-16vw;right:-10vw;background:radial-gradient(circle,#11af8e,transparent 68%);opacity:.16}
+.bg .b2{width:38vw;height:38vw;top:44%;left:-14vw;background:radial-gradient(circle,#8fd3f5,transparent 68%);opacity:.2}
+.bg .b3{width:24vw;height:24vw;bottom:-6vw;right:8vw;background:radial-gradient(circle,#fcd058,transparent 70%);opacity:.16}
+
+/* 顶栏 */
+.top{position:sticky;top:0;z-index:60;height:64px;background:rgba(255,255,255,.86);backdrop-filter:blur(14px) saturate(1.4);border-bottom:1px solid var(--border)}
+.top-in{max-width:var(--wrap);margin:0 auto;height:100%;padding:0 24px;display:flex;align-items:center;gap:12px}
+.top img{height:24px;width:auto}
+.top .sep{width:1px;height:18px;background:var(--border-2)}
+.top .t{font-weight:700;font-size:15px;letter-spacing:-.2px}
+.top .t em{font-style:normal;color:#0d8a70;background:var(--accent-soft);padding:1px 7px;border-radius:6px;font-size:12.5px;margin-left:6px;font-weight:600}
+.top .sp{flex:1}
+.top a.ghost{border:1px solid var(--border);border-radius:9px;padding:6px 13px;font-size:13px;color:var(--text-2);transition:all .18s var(--ease)}
+.top a.ghost:hover{border-color:var(--border-2);color:#0d8a70;text-decoration:none}
+
+/* 布局 */
+.shell{max-width:var(--wrap);margin:0 auto;padding:0 24px;position:relative;z-index:1}
+.with-toc{display:grid;grid-template-columns:208px minmax(0,1fr);gap:52px;align-items:start}
+@media (max-width:980px){.with-toc{grid-template-columns:1fr;gap:0}.toc{display:none}}
+
+.toc{position:sticky;top:88px;padding:26px 0 40px;font-size:13.4px}
+.toc h5{margin:0 0 12px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--text-3);font-weight:700}
+.toc a{display:block;color:var(--text-2);padding:4px 0 4px 12px;border-left:2px solid transparent;line-height:1.5;transition:all .18s var(--ease)}
+.toc a:hover{color:#0d8a70;border-left-color:var(--border-2);text-decoration:none}
+.toc a.on{color:#0d8a70;border-left-color:var(--brand);font-weight:600}
+
+main{min-width:0;padding-bottom:80px}
+
+/* Hero */
+.hero{padding:64px 0 44px;border-bottom:1px solid var(--border)}
+.hero .tag{display:inline-flex;align-items:center;gap:8px;background:var(--panel);border:1px solid var(--border);border-radius:999px;padding:5px 14px;font-size:12.5px;color:var(--text-2);box-shadow:var(--shadow-sm)}
+.hero .tag i{width:7px;height:7px;border-radius:50%;background:var(--brand);box-shadow:0 0 0 3px rgba(17,175,142,.18)}
+.hero h1{font-size:clamp(34px,5.4vw,58px);line-height:1.12;margin:22px 0 18px;font-weight:800;letter-spacing:-1.6px}
+.hero h1 .hl{background:linear-gradient(118deg,var(--brand) 0%,var(--brand-2) 58%,var(--gold-deep) 128%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p.lede{font-size:17px;color:var(--text-2);max-width:640px;margin:0 0 26px}
+.meta{display:flex;flex-wrap:wrap;gap:22px;font-size:13px;color:var(--text-3);border-top:1px dashed var(--border);padding-top:18px}
+.meta b{color:var(--text);font-weight:600}
+.hero-cta{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:30px}
+.btn{display:inline-flex;align-items:center;gap:7px;border:1px solid var(--border);background:var(--panel);color:var(--text);border-radius:10px;padding:9px 16px;font-size:14px}
+.btn.primary{background:linear-gradient(135deg,var(--brand),var(--brand-2));border-color:transparent;color:#fff;font-weight:600;box-shadow:0 8px 22px rgba(17,175,142,.24)}
+.btn:hover{text-decoration:none;border-color:var(--border-2)}
+
+/* 章节 */
+section{padding:58px 0;border-bottom:1px solid var(--border);scroll-margin-top:80px}
+section:last-child{border-bottom:none}
+.sec-no{font-family:var(--mono);font-size:12px;font-weight:700;letter-spacing:.18em;color:var(--brand);display:flex;align-items:center;gap:10px;margin-bottom:18px}
+.sec-no::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,var(--border-2),transparent)}
+h2{font-size:clamp(24px,3.2vw,33px);line-height:1.28;margin:0 0 14px;font-weight:780;letter-spacing:-.7px}
+h3{font-size:19px;margin:34px 0 12px;font-weight:700;letter-spacing:-.2px}
+h4{font-size:15.5px;margin:22px 0 8px;font-weight:700}
+p{margin:0 0 14px;color:var(--text-2)}
+p.strong{color:var(--text);font-size:16.5px}
+ul,ol{color:var(--text-2);padding-left:22px;margin:0 0 16px}
+li{margin-bottom:7px}
+li b,li strong{color:var(--text)}
+
+/* TL;DR */
+.tldr{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:24px 0 8px}
+@media (max-width:760px){.tldr{grid-template-columns:1fr}}
+.tl{background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:20px;box-shadow:var(--shadow-sm);position:relative;overflow:hidden}
+.tl::after{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--brand)}
+.tl:nth-child(2)::after{background:var(--sky-deep)}
+.tl:nth-child(3)::after{background:#e0a92e}
+.tl .n{font-family:var(--mono);font-size:12px;color:var(--text-3);font-weight:700}
+.tl h4{margin:6px 0 8px;font-size:16px}
+.tl p{margin:0;font-size:13.6px;color:var(--text-2)}
+
+/* 提示框 */
+.note{border-radius:12px;padding:14px 18px;font-size:14px;margin:18px 0;border:1px solid var(--border);background:var(--panel-2);color:var(--text-2)}
+.note b{color:var(--text)}
+.note.tip{background:rgba(143,211,245,.14);border-color:rgba(143,211,245,.5)}
+.note.warn{background:rgba(252,208,88,.16);border-color:rgba(252,208,88,.55)}
+.note.key{background:var(--accent-soft);border-color:var(--border-2)}
+.note .lbl{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.08em;padding:1px 8px;border-radius:999px;margin-right:8px;background:#fff;border:1px solid var(--border);color:#0d8a70}
+
+/* 线框图 */
+.wire{background:var(--panel);border:1px solid var(--border);border-radius:16px;overflow:hidden;box-shadow:var(--shadow);margin:24px 0}
+.wire-bar{display:flex;align-items:center;gap:6px;padding:9px 14px;background:var(--panel-2);border-bottom:1px solid var(--border)}
+.wire-bar i{width:8px;height:8px;border-radius:50%;background:#dbe9e6}
+.wire-bar i:nth-child(1){background:#f5c0ae}
+.wire-bar i:nth-child(2){background:#f6dfa6}
+.wire-bar i:nth-child(3){background:#b6dfd5}
+.wire-bar span{margin-left:10px;font-family:var(--mono);font-size:11px;color:var(--text-3)}
+.wire-body{padding:0}
+
+/* 图库样例缩略图（CSS 绘制的 swiss 版式） */
+.mini-slide{position:relative;aspect-ratio:16/10;background:#fff;border-bottom:1px solid var(--border);padding:16px 18px;display:flex;flex-direction:column;justify-content:center;overflow:hidden}
+.mini-swiss::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(17,175,142,.09) 1px,transparent 1px),linear-gradient(90deg,rgba(17,175,142,.09) 1px,transparent 1px);background-size:24px 24px}
+.mini-slide .ms-kicker{position:relative;font-family:var(--mono);font-size:7.5px;letter-spacing:.18em;color:#7fa39c}
+.mini-slide .ms-title{position:relative;font-size:20px;font-weight:800;letter-spacing:-.8px;line-height:1.15;margin:5px 0 4px;color:#123f38}
+.mini-slide .ms-sub{position:relative;font-size:8.5px;color:#5f827b;letter-spacing:.02em}
+.mini-slide .ms-dot{position:absolute;right:20px;top:20px;width:20px;height:20px;border-radius:50%;background:var(--brand)}
+.mini-slide .ms-lines{position:absolute;left:18px;right:18px;bottom:14px;display:flex;gap:5px}
+.mini-slide .ms-lines i{height:3px;flex:1;background:rgba(17,175,142,.28);border-radius:2px}
+.mini-slide .ms-lines i:nth-child(2){flex:.6;background:rgba(252,208,88,.75)}
+.mini-slide .ms-lines i:nth-child(3){flex:.3;background:rgba(143,211,245,.85)}
+.mock-top{display:flex;align-items:center;gap:12px;padding:11px 16px;border-bottom:1px solid var(--border);background:rgba(255,255,255,.7);position:relative}
+.mock-logo{height:17px;width:auto}
+.mock-name{font-size:12px;font-weight:700;color:var(--text)}
+.mock-name em{font-style:normal;font-size:10px;color:#0d8a70;background:var(--accent-soft);padding:0 5px;border-radius:4px;margin-left:4px}
+.mock-nav{display:flex;gap:2px;margin-left:6px}
+.mock-nav span{font-size:11.5px;color:var(--text-3);padding:3px 8px;border-radius:5px}
+.mock-nav span.on{color:#0d8a70;background:var(--accent-soft);font-weight:600}
+.mock-search{margin-left:auto;font-size:11px;color:var(--text-3);border:1px solid var(--border);border-radius:6px;padding:3px 9px;background:var(--panel-2)}
+.mock-hero{padding:26px 18px 22px}
+.mock-hero .k{font-size:10.5px;color:var(--text-3);border:1px solid var(--border);border-radius:999px;padding:2px 9px;display:inline-block}
+.mock-hero h1{font-size:clamp(18px,3vw,28px);margin:10px 0 8px;letter-spacing:-.8px;line-height:1.2;font-weight:800}
+.mock-hero h1 b{font-family:var(--mono);color:var(--brand)}
+.mock-hero p{font-size:11.8px;color:var(--text-3);margin:0 0 12px;max-width:420px}
+.mock-stats{display:flex;gap:7px;flex-wrap:wrap}
+.mock-stats div{border:1px solid var(--border);border-radius:8px;padding:6px 11px;background:var(--panel)}
+.mock-stats b{display:block;font-family:var(--mono);font-size:15px;line-height:1.2}
+.mock-stats span{font-size:10px;color:var(--text-3)}
+
+/* 标注点 */
+.pin{display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;border-radius:50%;background:var(--brand);color:#fff;font-size:11px;font-weight:700;font-family:var(--mono);flex-shrink:0;box-shadow:0 3px 8px rgba(17,175,142,.3)}
+.pin.abs{position:absolute;z-index:2}
+.legend{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:10px 22px;margin:18px 0 0;font-size:13.4px;color:var(--text-2)}
+.legend div{display:flex;gap:9px;align-items:flex-start;line-height:1.55}
+.legend b{color:var(--text);font-weight:600}
+
+/* 筛选条示意 */
+.mock-filter{padding:14px 16px;display:flex;flex-direction:column;gap:8px;background:var(--panel-2);border-top:1px solid var(--border)}
+.mock-row{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+.mock-row .lab{font-size:10px;color:var(--text-3);font-weight:700;letter-spacing:.06em;width:32px}
+.chip{font-size:11px;border:1px solid var(--border);border-radius:999px;padding:2px 10px;background:var(--panel);color:var(--text-2);white-space:nowrap}
+.chip.on{background:var(--brand);border-color:transparent;color:#fff;font-weight:600}
+.chip.gold{background:rgba(252,208,88,.3);border-color:rgba(252,208,88,.6);color:#8a6510}
+
+/* 卡片示意 */
+.mock-cards{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:16px;background:var(--panel-2)}
+@media (max-width:640px){.mock-cards{grid-template-columns:1fr}}
+.mock-card{background:var(--panel);border:1px solid var(--border);border-left:3px solid var(--brand);border-radius:10px;padding:11px 12px}
+.mock-card.sky{border-left-color:var(--sky-deep)}
+.mock-card h5{margin:0 0 3px;font-size:12px;font-weight:700}
+.mock-card .who{font-size:10px;color:var(--text-3);margin-bottom:6px}
+.mock-card p{font-size:11px;color:var(--text-2);margin:0 0 8px;line-height:1.5}
+.mock-card .row{display:flex;gap:5px;align-items:center}
+.mock-card .stars{margin-left:auto;font-family:var(--mono);font-size:10px;color:var(--text-3)}
+
+/* 抽屉示意 */
+.mock-drawer{display:grid;grid-template-columns:1fr 300px;min-height:300px}
+@media (max-width:700px){.mock-drawer{grid-template-columns:1fr;}.mock-drawer .dr{display:none}}
+.mock-drawer .bgp{background:repeating-linear-gradient(135deg,#f3f9f8,#f3f9f8 8px,#eef7f5 8px,#eef7f5 16px)}
+.mock-drawer .dr{background:var(--panel);border-left:1px solid var(--border);padding:16px}
+.mock-drawer .dr h5{font-size:13px;margin:0 0 3px}
+.mock-drawer .dr .sub{font-size:10px;color:var(--text-3);margin-bottom:9px}
+.mock-drawer .dr p{font-size:11px;color:var(--text-2);margin:0 0 10px;line-height:1.55}
+.kv{display:flex;gap:4px;flex-wrap:wrap;margin-bottom:10px}
+.kv span{font-size:9.5px;border-radius:999px;padding:1px 7px;background:var(--accent-soft);color:#0d8a70}
+.kv span.g{background:rgba(252,208,88,.3);color:#8a6510}
+.kv span.n{background:var(--panel-3);color:var(--text-3)}
+.mini-h{font-size:9.5px;letter-spacing:.1em;color:var(--text-3);font-weight:700;margin:10px 0 5px}
+.capgrid{display:grid;grid-template-columns:1fr 1fr;gap:4px}
+.capgrid i{font-style:normal;font-size:9.5px;color:var(--text-2);background:var(--panel-2);border:1px solid var(--border);border-radius:5px;padding:3px 6px;display:flex;justify-content:space-between}
+.capgrid i::after{content:"支持";color:var(--brand);opacity:.9}
+.capgrid i.no::after{content:"未提";color:var(--text-3)}
+
+/* 步骤 */
+.step{display:grid;grid-template-columns:44px 1fr;gap:20px;padding:24px 0;border-top:1px dashed var(--border)}
+.step:first-of-type{border-top:none;padding-top:10px}
+.step .num{width:36px;height:36px;border-radius:11px;background:linear-gradient(135deg,var(--brand),var(--brand-2));color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-weight:700;font-size:14px;box-shadow:0 6px 16px rgba(17,175,142,.22)}
+.step h4{margin:2px 0 8px;font-size:17px}
+.step p{margin:0 0 10px;font-size:14.6px}
+
+/* 表格 */
+.tbl{width:100%;border-collapse:collapse;font-size:13.8px;margin:18px 0;background:var(--panel);border-radius:12px;overflow:hidden;box-shadow:var(--shadow-sm)}
+.tbl th{text-align:left;padding:11px 14px;background:var(--panel-2);font-weight:700;font-size:13px;color:var(--text);border-bottom:1px solid var(--border)}
+.tbl td{padding:10px 14px;border-bottom:1px solid var(--border);color:var(--text-2);vertical-align:top}
+.tbl tr:last-child td{border-bottom:none}
+.tbl td b{color:var(--text)}
+.tbl td:first-child{white-space:nowrap;font-weight:600;color:var(--text)}
+.tbl code{font-size:12px}
+
+/* 代码 / 提示词 */
+pre{background:var(--panel-2);border:1px solid var(--border);border-radius:12px;padding:16px 18px;overflow-x:auto;font-family:var(--mono);font-size:12.8px;line-height:1.72;color:var(--text-2);position:relative;margin:14px 0;white-space:pre-wrap}
+pre .cp{position:absolute;top:8px;right:8px;border:1px solid var(--border);background:var(--panel);color:var(--text-3);border-radius:7px;font-size:11px;padding:2px 9px;cursor:pointer;font-family:inherit}
+pre .cp:hover{color:#0d8a70;border-color:var(--border-2)}
+
+/* 图表 */
+.chart-wrap{background:var(--panel);border:1px solid var(--border);border-radius:16px;padding:18px 16px 12px;box-shadow:var(--shadow-sm);margin:20px 0}
+.chart-wrap h4{margin:2px 2px 2px;font-size:15px}
+.chart-wrap .sub{font-size:12px;color:var(--text-3);margin:0 2px 8px}
+.chart{height:290px;width:100%}
+.chart-note{font-size:13px;color:var(--text-2);border-top:1px solid var(--border);margin-top:6px;padding:12px 2px 2px;line-height:1.7}
+.chart-note b{color:var(--text)}
+
+/* FAQ */
+details{background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:0 18px;margin-bottom:10px;box-shadow:var(--shadow-sm)}
+details[open]{border-color:var(--border-2)}
+summary{cursor:pointer;padding:14px 0;font-weight:600;font-size:14.8px;list-style:none;display:flex;align-items:center;gap:10px}
+summary::-webkit-details-marker{display:none}
+summary::before{content:"+";font-family:var(--mono);color:var(--brand);font-size:16px;width:14px}
+details[open] summary::before{content:"−"}
+details p{font-size:14px;margin:0 0 14px;padding-left:24px}
+
+/* 快捷键 */
+.keys{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px;margin:18px 0}
+.keys div{display:flex;align-items:center;gap:10px;background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:10px 14px;font-size:13.4px;color:var(--text-2)}
+.keys div span:last-child{margin-left:auto;color:var(--text-3);font-size:12.5px}
+
+/* 页脚 */
+footer{padding:34px 0 54px;background:var(--panel-2);border-top:1px solid var(--border)}
+.f-in{max-width:var(--wrap);margin:0 auto;padding:0 24px;display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;align-items:flex-start}
+.f-brand{display:flex;align-items:center;gap:10px;font-size:13.4px;color:var(--text-2)}
+.f-brand img{height:22px;width:auto}
+.f-meta{font-size:12.4px;color:var(--text-3);text-align:right;line-height:1.9}
+
+/* 滚动出现：默认可见，仅在有 JS 时做轻微上浮 */
+.reveal{opacity:1;transform:none}
+.js-anim .reveal{opacity:0;transform:translateY(12px);transition:opacity .5s var(--ease),transform .5s var(--ease)}
+.js-anim .reveal.in{opacity:1;transform:none}
+
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}.reveal{opacity:1;transform:none}}
+
+@media (max-width:640px){
+  .top{height:58px}
+  .top-in{padding:0 14px;gap:8px}
+  .top img{height:20px}
+  .top .sep{display:none}
+  .top .t{font-size:13.5px;white-space:nowrap;letter-spacing:0}
+  .top .t em{display:none}
+  .top a.ghost{white-space:nowrap;flex-shrink:0;padding:5px 10px;font-size:12px}
+  .hero{padding:38px 0 30px}
+  .hero h1{letter-spacing:-1px}
+  .hero p.lede{font-size:15.6px}
+  .meta{gap:12px 18px;font-size:12.4px}
+  h2{letter-spacing:-.4px}
+}
+
+@media print{
+  .top,.toc,.bg,.hero-cta{display:none!important}
+  body{background:#fff;font-size:11pt}
+  .with-toc{display:block}
+  section{page-break-inside:avoid;padding:22px 0}
+  .wire,.chart-wrap,.tbl,details{box-shadow:none}
+  .reveal{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+<div class="bg" aria-hidden="true"><i class="b1"></i><i class="b2"></i><i class="b3"></i></div>
+
+<header class="top">
+  <div class="top-in">
+    <img src="assets/brand/logo.png" alt="研选家">
+    <span class="sep"></span>
+    <span class="t">图鉴怎么用<em>使用说明书</em></span>
+    <span class="sp"></span>
+    <a class="ghost" href="https://kb-qa-agent-92848.app.workbuddy.host/" target="_blank" rel="noopener">打开图鉴 ↗</a>
+  </div>
+</header>
+
+<div class="shell">
+<div class="with-toc">
+
+  <nav class="toc" aria-label="目录">
+    <h5>目录</h5>
+    <a href="#tldr" class="on">一分钟看懂</a>
+    <a href="#map">界面地图</a>
+    <a href="#actions">五个动作</a>
+    <a href="#data">数据怎么读</a>
+    <a href="#gallery">风格图库</a>
+    <a href="#keys">快捷键</a>
+    <a href="#faq">常见问题</a>
+    <a href="#ops">维护与更新</a>
+  </nav>
+
+  <main>
+
+    <div class="hero">
+      <span class="tag"><i></i>PPT Skills 图鉴 · 运营使用版 · 使用说明书</span>
+      <h1>227 个 skill，<br><span class="hl">五个动作挑对那一个。</span></h1>
+      <p class="lede">这份说明书只讲一件事：怎么用图鉴这个网页，在 3 分钟内从 227 个 AI 幻灯片 skill 里，挑出能直接交付的那一个。</p>
+      <div class="hero-cta">
+        <a class="btn primary" href="https://kb-qa-agent-92848.app.workbuddy.host/" target="_blank" rel="noopener">打开图鉴 →</a>
+        <a class="btn" href="#actions">直接看五个动作</a>
+      </div>
+      <div class="meta">
+        <span>适用：<b>运营团队</b></span>
+        <span>技能数：<b>227</b></span>
+        <span>数据刷新：<b>2026-09-04</b></span>
+        <span>说明书版本：<b>2026-10-20</b></span>
+      </div>
+    </div>
+
+    <!-- 01 -->
+    <section id="tldr">
+      <div class="sec-no">01 / 一分钟看懂</div>
+      <h2>你只需要记住三件事</h2>
+      <p class="strong">图鉴不是「skill 商店」，是一个决策工具。它帮你把「227 选 1」压缩成「2 选 1，再 3 选 1」。</p>
+
+      <div class="tldr">
+        <div class="tl">
+          <div class="n">STEP 1</div>
+          <h4>先定路线</h4>
+          <p>问一句：对方要不要用 PowerPoint 打开并编辑？要 → PPTX 路线（79 个）；不要 → HTML 路线（83 个）。这一步砍掉 2/3 候选。</p>
+        </div>
+        <div class="tl">
+          <div class="n">STEP 2</div>
+          <h4>再看脸</h4>
+          <p>去「风格图库」翻 534 张样图。看着对的那几张，点开就是对应的 skill。不用先理解 skill 是什么。</p>
+        </div>
+        <div class="tl">
+          <div class="n">STEP 3</div>
+          <h4>复制就走</h4>
+          <p>详情抽屉里复制安装命令，图库里点风格 ID 复制提示词，粘给你的 Agent，剩下的它自己走完。</p>
+        </div>
+      </div>
+
+      <div class="note key">
+        <span class="lbl">一句话</span><b>先问「能不能编辑」，再问「好不好看」。</b>顺序反了，就会挑到一个好看但交不出去的方案。
+      </div>
+    </section>
+
+    <!-- 02 -->
+    <section id="map">
+      <div class="sec-no">02 / 界面地图</div>
+      <h2>页面只有三块，别找第四个入口</h2>
+      <p>顶部导航三个页签：<b>首页</b>（决策与精选）、<b>全部技能</b>（筛选与搜索）、<b>风格图库</b>（534 张样图）。所有功能都在这三块里。</p>
+
+      <div class="wire reveal">
+        <div class="wire-bar"><i></i><i></i><i></i><span>kb-qa-agent-92848.app.workbuddy.host</span></div>
+        <div class="wire-body">
+          <div class="mock-top">
+            <img class="mock-logo" src="assets/brand/logo.png" alt="">
+            <span class="mock-name">PPT Skills<em>图鉴</em></span>
+            <div class="mock-nav"><span class="on">首页</span><span>全部技能</span><span>风格图库</span></div>
+            <span class="mock-search">搜索 skill、风格 ID… ⌘K</span>
+            <span class="pin" style="position:static">4</span>
+          </div>
+          <div class="mock-hero">
+            <span class="pin" style="position:absolute;margin:-6px 0 0 -6px">1</span>
+            <span class="k" style="margin-left:14px">数据源 many-ppt-skills 登记册</span>
+            <h1><b>227</b> 个 PPT Skill，<br>一页挑对你的那个。</h1>
+            <p>收录 227 个 AI 幻灯片 skill，其中 39 个人工读过 SKILL.md；按真正决定选择的点对比。</p>
+            <div class="mock-stats">
+              <div><b>227</b><span>skill 总数</span></div>
+              <div><b>39</b><span>人工核读</span></div>
+              <div><b>83</b><span>网页 HTML</span></div>
+              <div><b>79</b><span>原生 PPTX</span></div>
+              <div><b>304k</b><span>star 合计</span></div>
+              <div><b>534</b><span>风格样图</span></div>
+            </div>
+          </div>
+          <div class="mock-filter">
+            <div class="mock-row">
+              <span class="pin" style="position:static">5</span><span class="lab">路线</span>
+              <span class="chip on">网页 HTML 83</span><span class="chip">原生 PPTX 79</span><span class="chip">双路线 25</span><span class="chip">运行时 12</span>
+            </div>
+            <div class="mock-row">
+              <span class="lab">层级</span><span class="chip">S 15</span><span class="chip">A 52</span><span class="chip">B 160</span>
+              <span class="lab" style="width:auto;margin-left:6px">许可</span><span class="chip">MIT / Apache</span><span class="chip">Copyleft</span>
+            </div>
+            <div class="mock-row">
+              <span class="pin" style="position:static">6</span><span class="lab">能力</span>
+              <span class="chip">→ PPTX</span><span class="chip">数据图表</span><span class="chip">演讲者模式</span><span class="chip">自定义模板</span>
+              <span style="margin-left:auto;font-family:var(--mono);font-size:10px;color:var(--text-3)">83 / 227</span>
+            </div>
+          </div>
+          <div class="mock-cards">
+            <div class="mock-card">
+              <span class="pin" style="position:absolute;margin:-2px 0 0 -30px">7</span>
+              <h5>PPT Master</h5><div class="who">Hugo He · hugohe3/ppt-master</div>
+              <p>分路由的 PPTX 工作流，也是外部图鉴的综合分第一名。</p>
+              <div class="row"><span class="chip gold">S</span><span class="chip">MIT</span><span class="chip">核读</span><span class="stars">★ 51,948</span></div>
+            </div>
+            <div class="mock-card sky">
+              <h5>Frontend Slides</h5><div class="who">Zara Zhang · zarazhangrui/frontend-slides</div>
+              <p>零依赖单文件动效 deck，十年后照样能打开。</p>
+              <div class="row"><span class="chip gold">S</span><span class="chip">MIT</span><span class="chip">核读</span><span class="stars">★ 28,720</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="legend">
+        <div><span class="pin">1</span><span><b>首屏六个数字</b>：skill 总数、人工核读、两条路线的数量、star 合计、样图数。点击路线胶囊可直接跳到筛选结果。</span></div>
+        <div><span class="pin">2</span><span><b>路线决策区（首页继续往下）</b>：一张 HTML vs PPTX 的对照表，加一棵完整决策树。</span></div>
+        <div><span class="pin">3</span><span><b>精选 Top 6</b>：按公开数据算的综合分前六名，先用来看「这个领域的天花板长什么样」。</span></div>
+        <div><span class="pin">4</span><span><b>搜索入口</b>：点一下或按 <kbd>Ctrl</kbd>+<kbd>K</kbd>，打开全局命令面板。</span></div>
+        <div><span class="pin">5</span><span><b>筛选器</b>：路线 / 层级 / 许可 / 标记（核读、有风格 ID、近半年更新）四行，可叠加。</span></div>
+        <div><span class="pin">6</span><span><b>能力开关</b>：点亮即过滤。右侧实时显示「命中数 / 总数」。</span></div>
+        <div><span class="pin">7</span><span><b>技能卡片</b>：左侧色条代表路线，右上角是路线标签，底部是 Tier、许可与 star。</span></div>
+        <div><span class="pin">8</span><span><b>详情抽屉</b>：点卡片从右侧滑出，一张完整的体检卡。</span></div>
+      </div>
+    </section>
+
+    <!-- 03 -->
+    <section id="actions">
+      <div class="sec-no">03 / 五个动作</div>
+      <h2>从打开网页到拿到成品</h2>
+      <p>按顺序走一遍，中间不需要思考「skill 是什么」。</p>
+
+      <div class="step">
+        <div class="num">1</div>
+        <div>
+          <h4>回答那个唯一重要的问题</h4>
+          <p>首页往下滚，第一块就是它：<b>有人需要用 PowerPoint 打开你的交付物并编辑它吗？</b></p>
+          <ul>
+            <li><b>要 → PPTX 路线。</b>交付物是 .pptx，对方能改字、改图、改页序。适合经营月报、投标、交给非技术同事二次编辑。</li>
+            <li><b>不要 → HTML 路线。</b>交付物是一个 .html，浏览器打开即放。设计天花板高得多，适合分享、演讲、发布会、群里看。</li>
+          </ul>
+          <div class="note warn"><span class="lbl">坑</span>最贵的错误不是选错 skill，是选错路线。花三天做了一个极漂亮的 HTML deck，结果对方要拿去改第 12 页 —— 全部作废。</div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="num">2</div>
+        <div>
+          <h4>用筛子把 227 收到个位数</h4>
+          <p>进「全部技能」，按四层收窄。每一层点一下就好，右侧数字会实时变。</p>
+          <table class="tbl">
+            <tr><th>筛什么</th><th>怎么用</th><th>典型场景</th></tr>
+            <tr><td>路线</td><td>点「网页 HTML」或「原生 PPTX」</td><td>已经在第 1 步定了，必选</td></tr>
+            <tr><td>层级</td><td>S = 5k+ star 规模验证；A = 100–5k 实用候选；B = 新/小众</td><td>怕踩坑就只留 S + A</td></tr>
+            <tr><td>许可</td><td>MIT / Apache 可商用；Copyleft 先看协议</td><td>要放进对外产品时必查</td></tr>
+            <tr><td>能力</td><td>点亮「→ PPTX」「数据图表」「演讲者模式」等</td><td>有硬性要求时才点，点多了会筛空</td></tr>
+          </table>
+          <div class="note tip"><span class="lbl">技巧</span>先只点「路线」，记住剩余数量（比如 83）。再加一个你真正在意的能力，看它掉到多少 —— 掉得越狠，说明这个能力越稀缺。</div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="num">3</div>
+        <div>
+          <h4>点开卡片，读那张体检卡</h4>
+          <p>抽屉里从上到下是：一句话定位 → 标签（路线 / Tier / 许可 / 核读 / star / 综合分 / 更新时间）→ 适合什么 → 风格 ID → 亮点 → 原文证据 → 能力矩阵 → 安装命令 → 样图。</p>
+          <p><b>只看三处就够决策：</b></p>
+          <ol>
+            <li><b>适合（bestFor）</b>：作者自己写的适用场景，比 tagline 准。</li>
+            <li><b>能力矩阵</b>：你要的能力是「支持」还是「未提及」。</li>
+            <li><b>原文证据</b>：带「人工核读」标记的条目，会贴出 SKILL.md 里的原句，可以直接判断真假。</li>
+          </ol>
+          <div class="note"><span class="lbl">口径</span>能力矩阵里的「未提及」<b>不等于不支持</b>，只代表项目文档没写。要用于正式交付，必须自己实测一次。</div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="num">4</div>
+        <div>
+          <h4>复制两样东西</h4>
+          <p><b>安装命令</b>在抽屉里，点「复制」。<b>提示词</b>在风格图库里，点风格 ID 那个等宽标签 —— 复制到的是一整句，不是只有 ID 三个字。</p>
+          <pre>用 <b>soft-editorial</b> 这个模板，把【素材】做成一份【页数】页的 deck，
+面向【受众】，每页字少一点。<button class="cp" data-copy="tpl1">复制</button></pre>
+          <p>上面这版比图鉴原句多了半句「先给我 3 个预览」，建议直接用：前半句写死了风格 ID，Agent 不用猜；后半句写死了先出预览，你能在半成品阶段叫停。</p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="num">5</div>
+        <div>
+          <h4>粘给 Agent，然后验收</h4>
+          <p>粘进 WorkBuddy 或任何你顺手的智能体。它会先查有没有装这个 skill，没装会问你要不要装，然后按风格出预览。</p>
+          <p>验收看三条，缺一条就打回：</p>
+          <ol>
+            <li><b>能不能打开。</b>PPTX 用 PowerPoint 打开不报修复；HTML 双击能放。</li>
+            <li><b>能不能改。</b>要编辑的话，文字得是真文本，不是整页截图。</li>
+            <li><b>数字对不对。</b>图表和正文的数字必须来自同一份源，别一处一个口径。</li>
+          </ol>
+          <div class="note key"><span class="lbl">结论</span>图鉴负责「选」，不负责「保证」。选完之后的验收，仍然是你自己的活。</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 04 -->
+    <section id="data">
+      <div class="sec-no">04 / 数据怎么读</div>
+      <h2>页面上每个数字，都能追到出处</h2>
+      <p>图鉴的底层是一份公开登记册。下面两张图就是页面数据的两条主线：<b>路线分布</b>决定你的第一步，<b>能力覆盖</b>决定你的第二步。</p>
+
+      <div class="chart-wrap reveal">
+        <h4>路线决定一半的选择题</h4>
+        <p class="sub">227 个 skill 按输出路线分布 · 数据源 many-ppt-skills（2026-09-04 刷新）</p>
+        <div class="chart" id="chart-route"></div>
+        <div class="chart-note"><b>怎么用：</b>网页 HTML 83 个、原生 PPTX 79 个，两条主线合计 162 个，占全部 227 的 71%。所以第一步永远是问「对方要不要用 PowerPoint 改」，答完这一步，三分之二的候选直接出局。</div>
+      </div>
+
+      <div class="chart-wrap reveal">
+        <h4>真正支持 → PPTX 的只有 17 个</h4>
+        <p class="sub">能力矩阵命中数 · 读自各项目文档，未提及不计</p>
+        <div class="chart" id="chart-cap"></div>
+        <div class="chart-note"><b>怎么用：</b>文档明确写了支持「→ PPTX」的只有 17 个，支持「演讲者模式」的只有 4 个，能套企业模板的 7 个。风格好看和能力齐全是两回事 —— 挑完风格，务必把能力矩阵看一眼。</div>
+      </div>
+
+      <h3>字段字典</h3>
+      <table class="tbl">
+        <tr><th>字段</th><th>含义</th><th>怎么用</th></tr>
+        <tr><td>路线</td><td>产出物的形态：<code>html</code> / <code>pptx</code> / <code>hybrid</code> / <code>framework</code> / <code>image</code> / <code>templates</code> / <code>suite</code></td><td>第一道筛子，必选</td></tr>
+        <tr><td>Tier</td><td>S = 5k+ star；A = 100–5k；B = 新/小众</td><td>怕踩坑只留 S + A</td></tr>
+        <tr><td>许可</td><td>MIT / Apache = 宽松；Copyleft（如 AGPL）= 有传染性；未标注 = 商用前必须核对</td><td>对外产品务必看</td></tr>
+        <tr><td>综合分</td><td>star 45 + 活跃 15 + 许可 15 + 人工核读 10 + 能力 15 = 100</td><td><b>不是实测质量分</b>，只用于排序，别当评级</td></tr>
+        <tr><td>人工核读</td><td>有人真的读过该项目的 SKILL.md 并摘了原句</td><td>优先级高于同分的其他条目</td></tr>
+        <tr><td>能力矩阵</td><td>支持 / 不支持 / 未提及 三态</td><td>「未提及」要自己实测</td></tr>
+        <tr><td>风格 ID</td><td>等宽小写串，如 <code>swiss-grid</code>、<code>soft-editorial</code></td><td>写进提示词即可点名风格</td></tr>
+        <tr><td>更新时间</td><td>仓库最后一次 commit 的日期</td><td>两年没动的，谨慎当主力</td></tr>
+      </table>
+
+      <div class="note warn"><span class="lbl">注意</span>综合分是按公开数据算的排序依据，<b>不是横评成绩</b>。star 高只说明关注的人多，不说明适合你的场景。</div>
+    </section>
+
+    <!-- 05 -->
+    <section id="gallery">
+      <div class="sec-no">05 / 风格图库</div>
+      <h2>不想读字，就直接看脸</h2>
+      <p>「风格图库」有 534 张各项目公开的成品图，覆盖全部 227 个 skill。每张图下面那串等宽字就是<b>风格 ID</b>。</p>
+
+      <div class="wire reveal">
+        <div class="wire-bar"><i></i><i></i><i></i><span>风格图库 · 30 / 534</span></div>
+        <div class="wire-body">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:14px">
+            <div style="border:1px solid var(--border);border-radius:10px;overflow:hidden;background:var(--panel)">
+              <div class="mini-slide mini-swiss">
+                <span class="ms-dot"></span>
+                <div class="ms-kicker">GRID SYSTEMS</div>
+                <div class="ms-title">网格系统</div>
+                <div class="ms-sub">The Grid as a Way of Seeing</div>
+                <div class="ms-lines"><i></i><i></i><i></i></div>
+              </div>
+              <div style="padding:9px 10px">
+                <div style="font-size:10.5px;color:var(--text-2);margin-bottom:6px">Swiss typographic grid — Grid Systems primer</div>
+                <div style="display:flex;gap:6px;align-items:center">
+                  <span style="font-family:var(--mono);font-size:10px;background:var(--panel-3);border:1px solid var(--border);border-radius:5px;padding:1px 6px;color:#0d8a70">swiss-grid</span>
+                  <span style="margin-left:auto;font-size:9.5px;color:var(--text-3)">PPT Master</span>
+                </div>
+              </div>
+            </div>
+            <div style="border:1px solid var(--border);border-radius:10px;overflow:hidden;background:var(--panel)">
+              <img src="assets/img/sample-editorial.jpg" alt="editorial 风格样图" style="width:100%;aspect-ratio:16/10;object-fit:contain;background:#f4efe6;border-bottom:1px solid var(--border)">
+              <div style="padding:9px 10px">
+                <div style="font-size:10.5px;color:var(--text-2);margin-bottom:6px">Editorial layout — annual review deck</div>
+                <div style="display:flex;gap:6px;align-items:center">
+                  <span style="font-family:var(--mono);font-size:10px;background:var(--panel-3);border:1px solid var(--border);border-radius:5px;padding:1px 6px;color:#0d8a70">soft-editorial</span>
+                  <span style="margin-left:auto;font-size:9.5px;color:var(--text-3)">Frontend Slides</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <h3>三步用上某个风格</h3>
+      <ol>
+        <li><b>找</b>：在顶部搜索框输入风格 ID 片段（如 <code>editorial</code>），或直接翻。图库支持按风格 ID 过滤。</li>
+        <li><b>抄</b>：点那张图下面的等宽标签。复制到的是「用 {风格ID} 这个模板，把【素材】做成一份【页数】页的 deck，面向【受众】，每页字少一点。」，三个方括号留给你的内容。</li>
+        <li><b>换</b>：把【素材】【页数】【受众】三处方括号替换成你的内容，其余别动。</li>
+      </ol>
+
+      <div class="note tip"><span class="lbl">提示</span>同一张样图只代表该风格的一页，别指望整套都长这样。要判断整套水平，去抽屉里看这个 skill 的全部样图（最多 6 张）。</div>
+    </section>
+
+    <!-- 06 -->
+    <section id="keys">
+      <div class="sec-no">06 / 快捷键</div>
+      <h2>除了翻图库，其余都能用键盘走完</h2>
+      <div class="keys">
+        <div><kbd>Ctrl</kbd><kbd>K</kbd><span>打开 / 关闭全局搜索</span></div>
+        <div><kbd>/</kbd><span>在「全部技能」页聚焦搜索框</span></div>
+        <div><kbd>↑</kbd><kbd>↓</kbd><span>搜索结果上下选择</span></div>
+        <div><kbd>Enter</kbd><span>打开选中项的详情</span></div>
+        <div><kbd>Esc</kbd><span>关面板 / 关抽屉 / 关灯箱</span></div>
+      </div>
+      <p>灯箱翻页用两侧箭头点击（未绑定左右键）。搜索框认三种输入：skill 名称（<code>PPT Master</code>）、repo（<code>hugohe3/ppt-master</code>）、风格 ID（<code>swiss-grid</code>）。</p>
+    </section>
+
+    <!-- 07 -->
+    <section id="faq">
+      <div class="sec-no">07 / 常见问题</div>
+      <h2>六个被问过最多的问题</h2>
+
+      <details open>
+        <summary>「安装命令复制了，但我的电脑上没有这个 skill，怎么办？」</summary>
+        <p>把命令和提示词一起粘给 Agent，让它自己装。skill 的本质是一个带 <code>SKILL.md</code> 的目录：用户级放 <code>~/.workbuddy/skills/</code>，项目级放 <code>{项目}/.workbuddy/skills/</code>。认目录，不认命令。</p>
+      </details>
+
+      <details>
+        <summary>「综合分 95 的一定比 82 的好用吗？」</summary>
+        <p>不一定。综合分只按 star、活跃度、许可、是否人工核读、能力覆盖加权，反映的是「这个项目被验证的程度」，不是「适不适合你这次的场合」。同一个 95 分的 PPTX 工具，做发布会网页就是错的。</p>
+      </details>
+
+      <details>
+        <summary>「为什么能力矩阵里全是『未提及』？」</summary>
+        <p>因为很多项目的文档只写了怎么用，没写支持哪些能力。「未提及」是文档缺口，不是能力缺口。要确认，只有一条路：装上去实测一页。</p>
+      </details>
+
+      <details>
+        <summary>「HTML 路线做出来的东西，对方打不开怎么办？」</summary>
+        <p>HTML 是单文件，浏览器双击就能放，不需要装任何东西。真正的风险是对方要<b>改</b>——HTML 不适合非技术同事二次编辑。这也是第 1 步必须先问路线的原因。</p>
+      </details>
+
+      <details>
+        <summary>「Copyleft 许可到底能不能用？」</summary>
+        <p>内部汇报、自用交付，基本没问题。要嵌进对外售卖的产品或 SaaS，AGPL 会要求你开源衍生部分，风险很大。拿不准时看仓库里的 LICENSE 原文，别只看图鉴摘要。</p>
+      </details>
+
+      <details>
+        <summary>「页面上的数据多久更新一次？」</summary>
+        <p>上游登记册刷新后，由同步脚本拉取并重建，页脚会写明「数据同步于」的日期。当前为 <b>2026-09-04</b> 刷新版。</p>
+      </details>
+    </section>
+
+    <!-- 08 -->
+    <section id="ops">
+      <div class="sec-no">08 / 维护与更新</div>
+      <h2>上游更新了，怎么同步</h2>
+      <p>图鉴的数据来自公开登记册，不是手工维护的表格。上游刷新后，跑一条命令重建即可。</p>
+      <pre>cd F:/work/_ppt-atlas-build
+python sync.py            # 拉上游 → 比对新增/移除/有更新 → 补下载样图 → 重建数据
+python sync.py --build    # 断网时，仅用本地缓存重建</pre>
+      <p>脚本会打印本次变化：新增了哪些 id、移除了哪些、哪些条目有更新。先审一遍再发布，避免上游误删把页面筛空。</p>
+
+      <h3>发布</h3>
+      <table class="tbl">
+        <tr><th>方式</th><th>怎么做</th><th>特点</th></tr>
+        <tr><td>WorkBuddy 站点</td><td>说一句「同步线上」，覆盖当前链接</td><td>最快，链接不变，约 1 分钟生效</td></tr>
+        <tr><td>GitHub Pages</td><td><code>bash deploy-gh.sh</code></td><td>需先 <code>gh auth login</code>，适合对外长期托管</td></tr>
+      </table>
+
+      <div class="note"><span class="lbl">边界</span>本说明书只覆盖「图鉴网页怎么用」。具体某个 skill 怎么写出好 PPT，属于另一个话题，不在本文范围。</div>
+    </section>
+
+    <section id="credit">
+      <div class="sec-no">09 / 来源</div>
+      <p style="font-size:13.4px">数据源：<a href="https://github.com/brycewang-stanford/many-ppt-skills" target="_blank" rel="noopener">many-ppt-skills</a> 登记册（CC BY 4.0）。样图版权归各项目所有。图鉴站点：<a href="https://kb-qa-agent-92848.app.workbuddy.host/" target="_blank" rel="noopener">kb-qa-agent-92848.app.workbuddy.host</a>。品牌色取自研选家 2026 品牌规范：标准色 <code>#11af8e</code>，辅助色 <code>#fcd058</code> / <code>#8fd3f5</code>。</p>
+    </section>
+
+  </main>
+</div>
+</div>
+
+<footer>
+  <div class="f-in">
+    <div class="f-brand">
+      <img src="assets/brand/logo.png" alt="研选家">
+      <span>PPT Skills 图鉴 · 运营使用版 · 使用说明书</span>
+    </div>
+    <div class="f-meta">
+      <div>227 个 skill · 534 张样图 · 数据同步于 2026-09-04</div>
+      <div>研选家 · 2026-10</div>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/charts/echarts.min.js"></script>
+<script>
+(function(){
+  'use strict';
+
+  /* ── 复制 ── */
+  var tpl1 = '用 soft-editorial 这个模板，把【素材】做成一份【页数】页的 deck，\n面向【受众】，每页我现场讲，字少一点，先给我 3 个预览。';
+  function copy(text){
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(text).then(ok, function(){ fb(text); ok(); });
+    } else { fb(text); ok(); }
+  }
+  function fb(t){
+    var ta=document.createElement('textarea'); ta.value=t; ta.style.position='fixed'; ta.style.opacity='0';
+    document.body.appendChild(ta); ta.select(); try{document.execCommand('copy')}catch(e){} document.body.removeChild(ta);
+  }
+  function ok(){
+    var el=document.querySelector('.toast');
+    if(!el){ el=document.createElement('div'); el.className='toast';
+      el.style.cssText='position:fixed;left:50%;bottom:32px;transform:translateX(-50%);background:#0b4f45;color:#eafaf6;padding:9px 20px;border-radius:999px;font-size:13px;z-index:200;transition:opacity .2s';
+      document.body.appendChild(el); }
+    el.textContent='已复制到剪贴板'; el.style.opacity='1';
+    clearTimeout(el._t); el._t=setTimeout(function(){ el.style.opacity='0'; },1600);
+  }
+  document.addEventListener('click', function(e){
+    var b=e.target.closest('[data-copy]'); if(!b) return;
+    copy(tpl1);
+  });
+
+  /* ── 图表 ── */
+  var ink='#123f38', sub='#86a09a', grid='rgba(17,175,142,.12)';
+  function base(){
+    return {
+      textStyle:{ fontFamily:'PingFang SC, Microsoft YaHei, system-ui, sans-serif' },
+      grid:{ left:8, right:20, top:16, bottom:6, containLabel:true },
+      tooltip:{ trigger:'axis', axisPointer:{ type:'shadow' },
+        backgroundColor:'#ffffff', borderColor:'rgba(17,175,142,.24)', borderWidth:1,
+        textStyle:{ color:ink, fontSize:12 },
+        extraCssText:'box-shadow:0 8px 24px rgba(11,79,69,.12);border-radius:8px;' }
+    };
+  }
+  if(window.echarts){
+    var elR=document.getElementById('chart-route');
+    if(elR){
+      var c1=echarts.init(elR,null,{renderer:'canvas'});
+      c1.setOption(Object.assign(base(),{
+        xAxis:{ type:'category', data:['网页 HTML','原生 PPTX','双路线','运行时','出图优先','综合包','模板库'],
+          axisLine:{ lineStyle:{ color:grid } }, axisTick:{ show:false },
+          axisLabel:{ color:sub, fontSize:11 } },
+        yAxis:{ type:'value', splitLine:{ lineStyle:{ color:grid } }, axisLabel:{ color:sub, fontSize:11 } },
+        series:[{
+          type:'bar', barWidth:'52%',
+          data:[
+            { value:83, itemStyle:{ color:'#11af8e' } },
+            { value:79, itemStyle:{ color:'#3ec9ab' } },
+            { value:25, itemStyle:{ color:'#8fd3f5' } },
+            { value:12, itemStyle:{ color:'#bfe6f8' } },
+            { value:11, itemStyle:{ color:'#cdeef6' } },
+            { value:9,  itemStyle:{ color:'#dcf2f7' } },
+            { value:8,  itemStyle:{ color:'#e8f6f8' } }
+          ],
+          itemStyle:{ borderRadius:[6,6,0,0] },
+          label:{ show:true, position:'top', color:ink, fontSize:11, fontWeight:600 }
+        }]
+      }));
+      window.addEventListener('resize', function(){ c1.resize(); });
+    }
+    var elC=document.getElementById('chart-cap');
+    if(elC){
+      var c2=echarts.init(elC,null,{renderer:'canvas'});
+      c2.setOption(Object.assign(base(),{
+        grid:{ left:8, right:34, top:10, bottom:6, containLabel:true },
+        xAxis:{ type:'value', splitLine:{ lineStyle:{ color:grid } }, axisLabel:{ color:sub, fontSize:11 } },
+        yAxis:{ type:'category',
+          data:['代码高亮','演讲者模式','自定义模板','离线可用','数据图表','演讲备注','→ PDF','图示','动效','→ PPTX'],
+          axisLine:{ lineStyle:{ color:grid } }, axisTick:{ show:false },
+          axisLabel:{ color:sub, fontSize:11 } },
+        series:[{
+          type:'bar', barWidth:'46%',
+          data:[
+            { value:3,  itemStyle:{ color:'#e8f6f8' } },
+            { value:4,  itemStyle:{ color:'#dcf2f7' } },
+            { value:7,  itemStyle:{ color:'#cdeef6' } },
+            { value:8,  itemStyle:{ color:'#bfe6f8' } },
+            { value:10, itemStyle:{ color:'#a8dcf4' } },
+            { value:10, itemStyle:{ color:'#8fd3f5' } },
+            { value:13, itemStyle:{ color:'#5cc2ea' } },
+            { value:16, itemStyle:{ color:'#2f9fd0' } },
+            { value:17, itemStyle:{ color:'#3ec9ab' } },
+            { value:17, itemStyle:{ color:'#11af8e' } }
+          ],
+          itemStyle:{ borderRadius:[0,6,6,0] },
+          label:{ show:true, position:'right', color:ink, fontSize:11, fontWeight:600 }
+        }]
+      }));
+      window.addEventListener('resize', function(){ c2.resize(); });
+    }
+  }
+
+  /* ── 目录高亮 ── */
+  var links=[].slice.call(document.querySelectorAll('.toc a'));
+  var secs=links.map(function(a){ return document.querySelector(a.getAttribute('href')); });
+  function sync(){
+    var y=window.scrollY+120, idx=0;
+    secs.forEach(function(s,i){ if(s && s.offsetTop<=y) idx=i; });
+    links.forEach(function(a,i){ a.classList.toggle('on', i===idx); });
+  }
+  window.addEventListener('scroll', sync, {passive:true}); sync();
+
+  /* ── 滚动出现（有 JS 才启用；1.8s 后强制全显，兼容截图/打印/无滚动场景） ── */
+  var revs=[].slice.call(document.querySelectorAll('.reveal'));
+  if('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+    document.documentElement.classList.add('js-anim');
+    var io=new IntersectionObserver(function(es){
+      es.forEach(function(en){ if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target);} });
+    },{ threshold:.08 });
+    revs.forEach(function(el){ io.observe(el); });
+    setTimeout(function(){ revs.forEach(function(el){ el.classList.add('in'); }); },1800);
+  }
+})();
+</script>
+</body>
+</html>
